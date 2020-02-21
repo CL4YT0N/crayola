@@ -47,7 +47,17 @@ except ModuleNotFoundError as e:
 
 def time():
     return datetime.datetime.now().strftime('%H:%M:%S')
+from flask import Flask
+from flask import render_template
 
+app = Flask(__name__)
+
+@app.route('/')
+def geo_distance():
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run()
 def get_device_auth_details():
     if os.path.isfile('device_auths.json'):
         with open('device_auths.json', 'r') as fp:
